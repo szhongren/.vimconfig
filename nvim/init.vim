@@ -1,4 +1,5 @@
-set nocompatible              " be iMproved, required
+jset nocompatible              " be iMproved, required
+set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
 
@@ -9,9 +10,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'valloric/youcompleteme'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
+Plug 'rust-lang/rust.vim'
 
 " appearance
 Plug 'flazz/vim-colorschemes'
@@ -60,7 +62,7 @@ syntax enable
 
 " leader
 let mapleader = " "
-let maplocalleader = "\\"
+let maplocalleader = "//"
 
 " airline
 let g:airline_theme='behelit'
@@ -100,3 +102,8 @@ endif
 " colours)
 set t_Co=256
 
+" ycm python semantic
+let g:ycm_python_binary_path = 'python'
+
+" ycm rust semantic
+let g:ycm_rust_src_path = 'C:/Users/shaoz/.rustup/toolchains/stable-x86_64-pc-windows-msvc/lib/rustlib/src/rust/src'
