@@ -1,4 +1,4 @@
-jset nocompatible              " be iMproved, required
+set nocompatible              " be iMproved, required
 set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
