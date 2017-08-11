@@ -14,6 +14,7 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 Plug 'rust-lang/rust.vim'
+Plug 'leafgarland/typescript-vim'
 
 " appearance
 Plug 'flazz/vim-colorschemes'
@@ -55,8 +56,8 @@ set expandtab
 set softtabstop=4
 set tabstop=4
 
-hi CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=darkgrey guifg=white
-hi Search       cterm=NONE ctermbg=white ctermfg=NONE guibg=white    guifg=black
+hi CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
+hi Search       cterm=NONE ctermbg=white ctermfg=red guibg=white guifg=red
 
 syntax enable
 
@@ -107,3 +108,4 @@ let g:ycm_python_binary_path = 'python'
 
 " ycm rust semantic
 let g:ycm_rust_src_path = 'C:/Users/shaoz/.rustup/toolchains/stable-x86_64-pc-windows-msvc/lib/rustlib/src/rust/src'
+

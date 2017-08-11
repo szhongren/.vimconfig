@@ -18,12 +18,14 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'valloric/youcompleteme'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
+Plugin 'rust-lang/rust.vim'
 
 " appearance
 Plugin 'flazz/vim-colorschemes'
+Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bronson/vim-trailing-whitespace'
@@ -69,7 +71,7 @@ syntax enable
 
 " leader
 let mapleader = " "
-let maplocalleader = "\\"
+let maplocalleader = "//"
 
 " airline
 let g:airline_theme='behelit'
@@ -108,4 +110,10 @@ endif
 " Use 256 colours (Use this setting only if your terminal supports 256
 " colours)
 set t_Co=256
+
+" ycm python semantic
+let g:ycm_python_binary_path = 'python'
+
+" ycm rust semantic
+let g:ycm_rust_src_path = 'C:/Users/shaoz/.rustup/toolchains/stable-x86_64-pc-windows-msvc/lib/rustlib/src/rust/src'
 
