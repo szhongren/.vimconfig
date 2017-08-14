@@ -7,14 +7,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdcommenter'
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 " Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 Plug 'rust-lang/rust.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'Shougo/echodoc.vim'
 
 " appearance
 Plug 'flazz/vim-colorschemes'
@@ -56,8 +60,8 @@ set expandtab
 set softtabstop=4
 set tabstop=4
 
-hi CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
-hi Search       cterm=NONE ctermbg=white ctermfg=red guibg=white guifg=red
+hi CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=darkgrey guifg=white
+hi Search       cterm=NONE ctermbg=white ctermfg=NONE guibg=white    guifg=black
 
 syntax enable
 
@@ -104,8 +108,33 @@ endif
 set t_Co=256
 
 " ycm python semantic
-let g:ycm_python_binary_path = 'python'
+"let g:ycm_python_binary_path = 'python'
 
 " ycm rust semantic
-let g:ycm_rust_src_path = 'C:/Users/shaoz/.rustup/toolchains/stable-x86_64-pc-windows-msvc/lib/rustlib/src/rust/src'
+"let g:ycm_rust_src_path = 'C:/Users/shaoz/.rustup/toolchains/stable-x86_64-pc-windows-msvc/lib/rustlib/src/rust/src'
 
+"deoplete
+set hidden
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 0
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['pyls'],
+    \ }
+
+nnoremap <leader> l :call LanguageClient_setLoggingLevel('DEBUG')<CR>
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+
+" echodoc
+set noshowmode
+let g:echodoc#enable_at_startup = 1
