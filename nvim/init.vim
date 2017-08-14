@@ -67,7 +67,7 @@ syntax enable
 
 " leader
 let mapleader = " "
-let maplocalleader = "//"
+let maplocalleader = "\\"
 
 " airline
 let g:airline_theme='behelit'
